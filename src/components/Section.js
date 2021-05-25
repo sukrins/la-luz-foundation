@@ -6,7 +6,7 @@ function Section() {
     return (
         <Wrap>
             <video autoPlay={true} loop={true} playsInline={true} muted>
-                <source src="/videos/site.mp4" />
+                <source src="/videos/site.mp4"/>
             </video>
             <Fade bottom>
                 <ItemText>
