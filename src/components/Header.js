@@ -4,19 +4,40 @@ import { useSelector } from 'react-redux';
 import { selectMenuOptions } from '../features/menu/menuSlice';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
+import {
+    BrowserRouter as Router,
+    Link,
+} from 'react-router-dom';
 
 function Header() {
     const [burgerStatus, setBurgerStatus] = useState(false);
     const menuOptions = useSelector(selectMenuOptions);
+
+    function getMenuOption(menuOption) {
+        switch (menuOption) {
+            case 'Mission':
+                return 'mission';
+            case 'About Us':
+                return 'about-us';
+            case 'Our Members':
+                return 'members';
+            case 'Apply Today':
+                return '/#';
+            default:
+                return '/#';
+        }
+    }
 
     return (
         <Container>
             <img src='/images/logo.png' />
             <Menu>
                 {menuOptions && menuOptions.map((option, index) =>
-                    <a key={index} href='#'>
-                        <span>{option}</span>
-                    </a>
+                    <Router>
+                        <Link to={getMenuOption(option)}>
+                            <span>{option}</span>
+                        </Link>
+                    </Router>
                 )}
             </Menu>
             <RightMenu>
@@ -33,7 +54,7 @@ function Header() {
                     <li key={index}> <a href='#'>{option}</a></li>
                 )}
             </BurgerNav>
-        </Container>
+        </Container >
     )
 }
 

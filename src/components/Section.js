@@ -6,7 +6,7 @@ function Section() {
     return (
         <Wrap>
             <video autoPlay={true} loop={true} playsInline={true} muted>
-                <source src="/videos/site.mp4"/>
+                <source src="/videos/site.mp4" />
             </video>
             <Fade bottom>
                 <ItemText>
@@ -43,6 +43,17 @@ video{
     top: 0px;
     filter: brightness(50%);
     z-index: 0;
+
+    @media(max-width: 767px){
+        max-width: 100vw;
+        max-height: 100vh;
+        min-width: 100vw;
+        min-height: 100vh;
+    }
+}
+
+@media(max-width: 767px){
+    flex-direction: row;
 }
 `
 
@@ -69,6 +80,7 @@ const Buttons = styled.div``
 
 const DownArrow = styled.img`
 margin-top: 20px;
+margin-bottom: 20px;
 height: 40px;
 cursor: pointer;
 overflow-x: hidden;

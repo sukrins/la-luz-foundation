@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    options: ['About Us', 'Our Members', 'Apply Today']
+    options: ['Mission', 'About Us', 'Our Members', 'Apply Today']
 }
 
 const menuSlice = createSlice({
