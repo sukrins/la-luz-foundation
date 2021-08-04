@@ -8,7 +8,7 @@ function Member() {
     const members = useSelector(selectMembers);
 
     return (
-        <Container>
+        <Container id="members">
             <Fade bottom>
                 <ItemText>
                     <h1>Our Members</h1>
@@ -29,6 +29,10 @@ width: 100vw;
 background: black;
 opacity: 0.8;
 padding: 0 25%;
+
+@media(max-width: 1024pxpx){
+    padding: 0 10%;
+}
 `
 
 const ItemText = styled.div`
@@ -42,6 +46,12 @@ font-weight: 600;
     h1 { 
         font-size: 50px;
     }
+
+    @media(max-width: 540px){
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+        text-align: center;
+    }
 `
 
 const MemberText = styled.div`
@@ -51,4 +61,8 @@ text-align: left;
 font-weight: 500;
 font-size: 20px;
 padding-bottom: 3vh;
+
+@media(max-width: 540px){
+    text-align: center;
+}
 `

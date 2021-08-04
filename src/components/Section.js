@@ -5,9 +5,11 @@ import Fade from 'react-reveal/Fade'
 function Section() {
     return (
         <Wrap>
-            <video autoPlay={true} loop={true} playsInline={true} muted>
-                <source src="/videos/site.mp4" />
-            </video>
+            <VideoContainer>
+                <video autoPlay={true} loop={true} playsInline={true} muted>
+                    <source src="/videos/site.mp4" />
+                </video>
+            </VideoContainer>
             <Fade bottom>
                 <ItemText>
                     <h1>LA LUZ FOUNDATION</h1>
@@ -35,25 +37,29 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 
-video{
-    object-fit: fill;
-    max-height: 100vh;
-    min-width: 100vw;
-    position: absolute;
-    top: 0px;
-    filter: brightness(50%);
-    z-index: 0;
-
-    @media(max-width: 767px){
-        max-width: 100vw;
-        max-height: 100vh;
-        min-width: 100vw;
-        min-height: 100vh;
-    }
-}
-
 @media(max-width: 767px){
     flex-direction: row;
+}
+`
+
+const VideoContainer = styled.div`
+position: absolute;
+top: 0;
+bottom: 0;
+width: 100%;
+height: 100%; 
+overflow: hidden;
+
+video{
+    min-width: 100%; 
+    min-height: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    filter: brightness(50%);
+    transform: translate(-50%,-50%);
 }
 `
 
@@ -64,15 +70,24 @@ const ItemText = styled.div`
     margin-left: 10%;
     text-align: left;
     font-weight: 600;
-    width: 50%;
-
+   
         h1 { 
             font-size: 100px;
+            width: 50%;
+            @media(max-width: 540px){
+                font-size: 45px;
+                margin-bottom: 10%;
+                width: 100%;
+            }
         }
 
         p {
             line-height: 2.4;
             margin-top: 2%;
+            width: 50%;
+            @media(max-width: 540px){
+                width: 90%;
+            }
         }
 `
 
@@ -85,4 +100,8 @@ height: 40px;
 cursor: pointer;
 overflow-x: hidden;
 animation: animateDown infinite 1.5s;
+
+@media(max-width: 540px){
+    display: none;
+}
 `

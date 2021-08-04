@@ -4,7 +4,7 @@ import Fade from 'react-reveal/Fade'
 
 function AboutUs() {
     return (
-        <Wrap>
+        <Wrap id="about-us">
             <Fade bottom>
                 <ItemText>
                     <h1>About LLF</h1>
@@ -47,6 +47,11 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 padding: 0 25%;
+
+@media(max-width: 1024px){
+    padding: 0 10%;
+}
+
 `
 
 const ItemText = styled.div`
@@ -73,6 +78,35 @@ font-weight: 600;
     ul {
         padding-left: 50px;
     }
+
+    @media(max-width: 540px){
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+        
+        h1{
+            font-size: 45px;
+            margin-bottom: 10%;
+            width: 100%;
+            text-align: center;
+        }
+
+        p {
+            margin-top: 25%;
+            width: 100%;
+        }
+    }
+
+    @media(max-width: 1024px){
+        padding-top: 0;
+        padding-bottom: 10vh;
+    }
+
+    @media(max-width: 768px){
+        padding-top: 7vh;
+        padding-bottom: 10vh;
+    }
+
+
 `
 
 const Buttons = styled.div``
@@ -84,4 +118,7 @@ height: 40px;
 cursor: pointer;
 overflow-x: hidden;
 animation: animateDown infinite 1.5s;
+@media(max-width: 540px){
+    display: none;
+}
 `

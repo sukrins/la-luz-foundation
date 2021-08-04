@@ -4,10 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectMenuOptions } from '../features/menu/menuSlice';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
-import {
-    BrowserRouter as Router,
-    Link,
-} from 'react-router-dom';
+import { Link } from "react-scroll";
 
 function Header() {
     const [burgerStatus, setBurgerStatus] = useState(false);
@@ -26,18 +23,19 @@ function Header() {
             default:
                 return '/#';
         }
+
     }
 
     return (
         <Container>
             <img src='/images/logo.png' />
+
             <Menu>
-                {menuOptions && menuOptions.map((option, index) =>
-                    <Router>
-                        <Link to={getMenuOption(option)}>
-                            <span>{option}</span>
-                        </Link>
-                    </Router>
+                {menuOptions && menuOptions.map((option) =>
+                    <Link to={getMenuOption(option)} spy={true} smooth={true} offset={50} duration={500}>
+                        <span>{option}</span>
+                    </Link>
+
                 )}
             </Menu>
             <RightMenu>
@@ -51,7 +49,10 @@ function Header() {
                     <CustomClose onClick={() => setBurgerStatus(false)} />
                 </CloseWrapper>
                 {menuOptions && menuOptions.map((option, index) =>
-                    <li key={index}> <a href='#'>{option}</a></li>
+                    <li key={index}>
+                        <Link to={getMenuOption(option)} spy={true} smooth={true} offset={50} duration={500}>
+                            <span onClick={() => setBurgerStatus(false)}>{option}</span>
+                        </Link></li>
                 )}
             </BurgerNav>
         </Container >
@@ -73,9 +74,10 @@ const Container = styled.div`
 
     img {
         filter: brightness(0) invert(1);
-        width: 20%;
+        width: 30%;
         margin: -15px 0 -30px -10px;
         cursor: pointer;
+        margin-right: 0px !important;
     }
 `
 
@@ -91,7 +93,7 @@ const Menu = styled.div`
         padding: 0 30px;
         flex-wrap: nowrap;
         opacity: 0.75;
-
+        cursor: pointer;
         span {
             letter-spacing: 1.42px;
             position: relative;
